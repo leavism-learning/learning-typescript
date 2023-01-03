@@ -16,6 +16,14 @@ class UserAccount {
     this.name = name;
     this.id = id;
   }
+
+	function deleteUser(user: User) {
+		// ...
+	}
+	 
+	function getAdminUser(): User {
+		// ...
+	}
 }
 
 const user: User = new UserAccount('Michael', 10);
