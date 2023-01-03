@@ -3,7 +3,19 @@ interface User {
   id: number;
 }
 
-const user: User = {
-  name: 'Michael',
-  id: 10,
-};
+// const user: User = {
+//   name: 'Michael',
+//   id: 10,
+// };
+
+class UserAccount {
+  name: string;
+  id: number;
+
+  constructor(name: string, id: number) {
+    this.name = name;
+    this.id = id;
+  }
+}
+
+const user: User = new UserAccount('Michael', 10);
