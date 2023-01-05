@@ -18,3 +18,16 @@ function logPoint(p: Point) {
 
 const coordinate = { x: 10, y: 12 };
 logPoint(coordinate);
+
+class VirtualPoint {
+  x: number;
+  y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+const newVPoint = new VirtualPoint(13, 56);
+logPoint(newVPoint); // logs "13, 56"
