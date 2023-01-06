@@ -46,3 +46,5 @@ function anyIdentify(arg: any): any {
   // do something
   return arg;
 }
+
+let output = identify<string>('Heyo');
