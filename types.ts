@@ -52,3 +52,16 @@ function anyIdentify(arg: any): any {
 }
 
 let output: GenericInterface<number> = identify;
+
+// Using generics ensures the class with all its functions are working
+// with the same type
+class GenericNumber<NumType> {
+  zeroValue: NumType;
+  add: (x: NumType, y: NumType) => NumType;
+}
+
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function (x, y) {
+  return x + y;
+};
