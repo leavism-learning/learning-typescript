@@ -32,6 +32,10 @@ class VirtualPoint {
 const newVPoint = new VirtualPoint(13, 56);
 logPoint(newVPoint);
 
+interface GenericInterface<Type> {
+  (arg: Type): Type;
+}
+
 // Generics in functions. Captures the Type inside < > and can use it in the parameter and return
 // Whatever Type is, it stays consistent.
 // In this case, the arg type has the stay the same as the return type.
@@ -47,4 +51,4 @@ function anyIdentify(arg: any): any {
   return arg;
 }
 
-let output = identify<string>('Heyo');
+let output: GenericInterface<number> = identify;
