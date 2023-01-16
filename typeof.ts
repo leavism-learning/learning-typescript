@@ -18,3 +18,23 @@ type I2 = Person[keyof Person];
 
 type AliveOrName = 'alive' | 'name';
 type I3 = Person[AliveOrName];
+
+// Use indexed access types to get the type
+// of an element in an array
+const MyArray = [
+  { name: 'Alice', age: 15 },
+  { name: 'Bob', age: 23 },
+  { name: 'Eve', age: 38 },
+];
+
+type Person = (typeof MyArray)[number];
+
+type Person = {
+  name: string;
+  age: number;
+};
+type Age = (typeof MyArray)[number]['age'];
+
+type Age = number;
+// Or
+type Age2 = Person['age'];
