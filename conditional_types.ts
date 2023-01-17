@@ -30,6 +30,23 @@ type NameOrId<T extends number | string> = T extends number
   ? IdLabel
   : NameLabel;
 
+// That's it! This one generic function replaces
+// all of the overloads
 function createLabel<T extends number | string>(idOrName: T): NameOrId<T> {
   throw 'unimplemented';
 }
+
+// We move the T extends outside into the conditional type
+// so that we can do line 52 without throwin ga TS warning
+type MessageOf<T> = T extends { message: unknown } ? T['message'] : never;
+
+interface Email {
+  message: string;
+}
+
+interface Dog {
+  bark(): void;
+}
+
+type EmailMessageContents = MessageOf<Email>;
+type DogMessageContents = MessageOf<Dog>;
