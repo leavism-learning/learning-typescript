@@ -38,3 +38,11 @@ type Age = (typeof MyArray)[number]['age'];
 type Age = number;
 // Or
 type Age2 = Person['age'];
+
+// Something we do often is
+// use conditional types to apply constraints
+// and then extract out types
+// This can be easily done with infer
+type Flatten<Type> = Type extends Array<infer Item> ? Item : Type;
+// So now instead of using indexed access types
+// We can just infer the type of the array element
