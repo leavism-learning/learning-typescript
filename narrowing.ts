@@ -36,3 +36,36 @@ function printAll(strs: string | string[] | null) {
 }
 // Wrapped the whole body of function in a truthy check
 // but we may no longer be handling the empty string case correctly
+
+// Equality narrowing
+// We check that x === y
+// Since string is the only common type for both x and y
+// We can call string methods on both
+function example(x: string | number, y: string | boolean) {
+  if (x === y) {
+    // We can now call any 'string' method on 'x' or 'y'.
+    x.toUpperCase();
+    // ^?
+    y.toLowerCase();
+    // ^?
+  } else {
+    console.log(x);
+    //          ^?
+    console.log(y);
+    //          ^?
+  }
+}
+
+// And with equality narrow, we can rewrite the
+// bad printAll function again
+function printAll(strs: string | string[] | null) {
+  if (strs !== null) {
+    if (typeof strs === 'object') {
+      for (const s of strs) {
+        console.log(s);
+      }
+    } else if (typeof strs === 'string') {
+      console.log(strs);
+    }
+  }
+}
