@@ -69,3 +69,16 @@ function printAll(strs: string | string[] | null) {
     }
   }
 }
+
+// in operator checks if object or its prototype
+// chain has a property witha
+type Fish = { swim: () => void };
+type Bird = { fly: () => void };
+
+function move(animal: Fish | Bird) {
+  if ('swim' in animal) {
+    return animal.swim();
+  }
+
+  return animal.fly();
+}
