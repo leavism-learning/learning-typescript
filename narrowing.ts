@@ -82,3 +82,13 @@ function move(animal: Fish | Bird) {
 
   return animal.fly();
 }
+
+// instanceof narrowing checks whether or not
+// a value is an instance of another value
+function logValue(x: Date | string) {
+  if (x instanceof Date) {
+    console.log(x.toUTCString());
+  } else {
+    console.log(x.toUpperCase());
+  }
+}
