@@ -92,3 +92,19 @@ function logValue(x: Date | string) {
     console.log(x.toUpperCase());
   }
 }
+
+// type predicates
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+// pet is Fish is type predicate
+// pet is referring to the parameter name
+// what predicate does is narrows the type
+// down to the specificed type if the original type is compatible
+let pet = getSmallPet();
+
+if (isFish(pet)) {
+  pet.swim();
+} else {
+  pet.fly();
+}
