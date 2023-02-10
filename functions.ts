@@ -17,3 +17,24 @@ function greeter(fn: GreetFunction) {
   func('Hello world');
 }
 // and it's the same thing, probably cleaner tho
+
+// Call signatures
+// Functions can have properties, in addition to being callable
+// But function type expression syntax won't allow
+// for declaring propertiers
+
+// But you can use call signatures to assign properties to a function
+type DescribableFunction = {
+  description: string;
+  (someArg: number): boolean;
+};
+function doSomething(fn: DescribableFunction) {
+  console.log(fn.description + ' returned ' + fn(6));
+}
+
+function myFunc(someArg: number) {
+  return someArg > 3;
+}
+myFunc.description = 'default description';
+
+doSomething(myFunc);
